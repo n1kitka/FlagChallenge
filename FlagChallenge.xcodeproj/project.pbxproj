@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		8F89E6462D4242A200D404DE /* FlagChallenge */ = {
+		8F89E6962D4255BC00D404DE /* FlagChallenge */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = FlagChallenge;
 			sourceTree = "<group>";
@@ -32,7 +32,7 @@
 		8F89E63B2D4242A200D404DE = {
 			isa = PBXGroup;
 			children = (
-				8F89E6462D4242A200D404DE /* FlagChallenge */,
+				8F89E6962D4255BC00D404DE /* FlagChallenge */,
 				8F89E6452D4242A200D404DE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				8F89E6462D4242A200D404DE /* FlagChallenge */,
+				8F89E6962D4255BC00D404DE /* FlagChallenge */,
 			);
 			name = FlagChallenge;
 			packageProductDependencies = (

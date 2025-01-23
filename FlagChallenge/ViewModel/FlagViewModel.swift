@@ -13,11 +13,10 @@ class FlagViewModel: ObservableObject {
     @Published var currentQuestion: (flag: String, options: [String]) = ("", [])
     
     private var countries: [Country] = []
-    private var correctAnswer = ""
-    
-    let totalSteps = 5
-    var currentStep = 0
-    
+    private var correctAnswer: String = ""
+    private var currentStep: Int = 0
+    private let totalSteps = 5
+
     init() {
         setupCountries()
     }
@@ -37,17 +36,23 @@ class FlagViewModel: ObservableObject {
         appState = .question(currentStep + 1)
         loadNextQuestion()
     }
-    
-    func loadNextQuestion() {
+
+    private func loadNextQuestion() {
         guard currentStep < totalSteps else {
             appState = .finished
             return
         }
-        
-        let shuffledCoutries = countries.shuffled()
-        let currentCountry = shuffledCoutries[0]
-        let incorrectAnswer = shuffledCoutries[1].name
-        correctAnswer = currentCountry.name
-        currentQuestion = (flag: currentCountry.flag, options: [correctAnswer, incorrectAnswer].shuffled())
+
+        let shuffledCountries = countries.shuffled()
+        let correctCountry = shuffledCountries[0]
+        let incorrectAnswer = shuffledCountries[1].name
+        correctAnswer = correctCountry.name
+        currentQuestion = (flag: correctCountry.flag, options: [correctAnswer, incorrectAnswer].shuffled())
+    }
+
+    func nextStep() {
+        currentStep += 1
+        appState = .question(currentStep + 1)
+        loadNextQuestion()
     }
 }

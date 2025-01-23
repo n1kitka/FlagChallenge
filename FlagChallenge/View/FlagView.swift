@@ -21,7 +21,7 @@ struct FlagView: View {
                 .font(.system(size: 100))
 
             ForEach(viewModel.currentQuestion.options, id: \ .self) { option in
-                Button(action: { print("pressed on option \(option)") }) {
+                Button(action: { viewModel.submitAnswer(option) }) {
                     Text(option)
                         .font(.title2)
                         .padding()
@@ -32,15 +32,26 @@ struct FlagView: View {
             }
 
             Spacer()
-            
-            Button(action: viewModel.nextStep) {
-                Text("Next")
-                    .font(.title2)
-                    .padding()
-                    .background(.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .padding(.top, 10)
+
+            VStack {
+                if let feedbackMessage = viewModel.feedbackMessage {
+                    Text(feedbackMessage)
+                        .font(.body)
+                        .foregroundColor(viewModel.appState == .feedback(isCorrect: true) ? .green : .red)
+                        .padding(.top, 10)
+                }
+
+                if viewModel.appState == .feedback(isCorrect: true) || viewModel.appState == .feedback(isCorrect: false) {
+                    Button(action: viewModel.nextStep) {
+                        Text("Next")
+                            .font(.title2)
+                            .padding()
+                            .background(.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .padding(.top, 10)
+                    }
+                }
             }
             .padding()
         }

@@ -5,9 +5,9 @@
 //  Created by Nikita on 23.01.2025.
 //
 
-enum AppState {
+enum AppState: Equatable {
     case initial
     case question(Int)
-    case feedback
-    case finished
+    case feedback(isCorrect: Bool)
+    case finished(correct: Int, wrong: Int)
 }

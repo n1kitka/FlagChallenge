@@ -16,8 +16,8 @@ struct ContentView: View {
             InitialView(startAction: viewModel.startGame)
         case .question, .feedback:
             FlagView(viewModel: viewModel)
-        case .finished:
-            ResultsView()
+        case .finished(let correct, let wrong):
+            ResultsView(correct: correct, wrong: wrong, restartAction: viewModel.startGame)
         }
     }
 }

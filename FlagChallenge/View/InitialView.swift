@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InitialView: View {
+    let startAction: () -> Void
 
     var body: some View {
         VStack {
@@ -15,10 +16,8 @@ struct InitialView: View {
                 .font(.largeTitle)
                 .padding()
 
-            Button {
-                print("Button tapped")
-            } label: {
-                Text("Start Game")
+            Button(action: startAction) {
+                Text("Start")
                     .font(.title2)
                     .padding()
                     .background(.blue)
@@ -27,8 +26,4 @@ struct InitialView: View {
             }
         }
     }
-}
-
-#Preview {
-    InitialView()
 }
